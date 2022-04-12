@@ -1,11 +1,15 @@
-var lowerCase = ["a", "b", "c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var numbers = [1,2,3,4,5,6,7,8,9,0];
-var specialCharacters = ["!","@","#","$","%","^","&","*","-","_","+"];
-var characterChoice = [];
-var newPassword = [];
 function generatePassword() {
   //TODO: your code goes here
+
+  //establish variables and arrays
+var characterChoice = [];//total of all included choices
+var newPassword = [];//where generated password will go
+var randomChar = [];//where random character is placed
+var lowerCase = [97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122];
+var upperCase = [65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90];
+var numbers = [49,50,51,52,53,54,55,56,57,48];
+var specialCharacters = [33,64,35,36,37,94,38,42,45,95,43];
+
   //ask a which characters they would like to use
   if (confirm("Would you like to use lowercase letters?") == true) {
     characterChoice.push(lowerCase)
@@ -19,22 +23,41 @@ function generatePassword() {
   if (confirm("Would you like to use special characters?") == true) {
     characterChoice.push(specialCharacters)
   };
+console.log(characterChoice)
+  //combine chosen arrays
+  characterChoice.join();
+console.log(characterChoice);
+
   //ask how long to make password and pass it for loop to generate correct amount of characters
-    var passwordLength = parseInt(prompt("How many characters do you want? (Answer must be between 8-128)"));
-    if (passwordLength < 7 || passwordLength > 129) {
+  var passwordLength = parseInt(prompt("How many characters do you want? (Answer must be between 8-128)"));
+
+if (passwordLength < 7 || passwordLength > 129) {
       alert("Pick a number between 8-128. Refresh to try again")
    }
-  
-  for (var i=0; i<=passwordLength; i++) {
-   
-  (characterChoice[Math.floor(Math.random) * characterChoice.length]); 
-//place each output to new string for password
-}   
+console.log(passwordLength);  
 
-   console.log(passwordLength)
-   console.log(characterChoice)
+  //for loop to place a random character from picked and apend to password for each character of length chosen
+for (var i=0; i<passwordLength; i++) { 
+  var randomChar= [Math.floor(Math.random() * characterChoice.length)]; 
+  var newPassword = newPassword + randomChar;
+} 
+//console.log(randomChar);
+//place each output to new string for password
+console.log(newPassword)
+
+var password = String.fromCharCode(newPassword)
+  
+console.log(password)
   return "password"
 }
+
+
+
+
+
+
+
+
 
 // Assignment Code, DO NOT EDIT ANTHING  BELOW THIS LINE
 var generateBtn = document.querySelector("#generate");
